@@ -34,7 +34,7 @@ public struct ButtonCustom<V>: View where V: View {
         border: CGFloat = 1.2,
         style: ButtonStyle = .blank,
         action: @escaping () -> Void,
-        content: @escaping () -> V,
+        content: @escaping () -> V
     ) {
         self.width = width
         self.height = height

@@ -5,7 +5,7 @@
 //  Created by YanunYang on 2022/7/21.
 //
 
-import Foundation
+import SwiftUI
 
 extension Color {
     static let extend = ColorCustom

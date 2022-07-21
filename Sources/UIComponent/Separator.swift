@@ -30,7 +30,7 @@ public struct Separator: View {
     public init(
         direction: Direction = .horizontal,
         color: Color? = nil,
-        size: CGFloat? = nil,
+        size: CGFloat? = nil
     ) {
         self.direction = direction
         self.color = color

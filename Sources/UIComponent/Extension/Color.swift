@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+@available(iOS 15, macOS 12.0, *)
 extension Color {
     static let extend = ColorCustom()
 }
 
+@available(iOS 15, macOS 12.0, *)
 private struct ColorCustom {
     let primary = Color.primary
     let secondary = Color.primary.opacity(0.75)

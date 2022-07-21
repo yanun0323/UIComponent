@@ -1,5 +1,5 @@
 import XCTest
-//@testable import UIComponent
+@testable import UIComponent
 //
 //final class UIComponentTests: XCTestCase {
 //    func testExample() throws {

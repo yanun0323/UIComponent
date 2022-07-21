@@ -9,23 +9,23 @@ import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
 extension Color {
-    public static let primary: Self = .primary
-    public static let secondary: Self = .primary.opacity(0.75)
-    public static let gray: Self = .primary.opacity(0.5)
-    public static let fade: Self = .primary.opacity(0.25)
-    public static let background: Self = ColorAdapter(lightModeColor: .red, darkModeColor: .blue).render
-    public static func New(_ lightMode: Self, _ darkMode: Self) -> Self {
-        ColorAdapter(lightModeColor: lightMode, darkModeColor: darkMode).render
+    public static let primary100: Self = .primary
+    public static let primary75: Self = .primary.opacity(0.75)
+    public static let primary50: Self = .primary.opacity(0.5)
+    public static let primary25: Self = .primary.opacity(0.25)
+    public static let background: Self = ColorAdapter(lightModeColor: .red, darkModeColor: .blue).Render()
+    public static func Dynamic(_ lightMode: Self, _ darkMode: Self) -> Self {
+        ColorAdapter(lightModeColor: lightMode, darkModeColor: darkMode).Render()
     }
 }
 
 @available(iOS 15, macOS 12.0, *)
-struct ColorAdapter {
+public struct ColorAdapter {
     @Environment(\.colorScheme) private var colorScheme
-    var lightModeColor: Color
-    var darkModeColor: Color
+    public var lightModeColor: Color
+    public var darkModeColor: Color
     
-    public var render: Color {
+    public func Render() -> Color {
         switch colorScheme {
         case .light:
             return lightModeColor

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public extension Date {
+extension Date {
     public static func Parse(date: String, layout: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
@@ -17,7 +17,7 @@ public extension Date {
     
     public static let Layout = DateFormatLayout()
     
-    public func String(layout: String = Layout.Default) -> String {
+    public func String(_ layout: String = Layout.Default) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
         dateFormatter.locale = Locale(identifier: "zh_Hant_TW")

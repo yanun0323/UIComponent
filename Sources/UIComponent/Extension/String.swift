@@ -7,8 +7,8 @@
 
 import Foundation
 
-public extension String {
-    var IsNumber: Bool {
+extension String {
+    public var IsNumber: Bool {
         if self.isEmpty { return false }
         return self == self.filter { $0.isNumber }
     }

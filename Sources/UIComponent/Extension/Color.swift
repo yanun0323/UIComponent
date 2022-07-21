@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Color {
-    static let extend = ColorCustom
+    static let extend = ColorCustom()
 }
 
 private struct ColorCustom {

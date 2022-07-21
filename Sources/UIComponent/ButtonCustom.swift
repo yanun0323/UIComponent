@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15, macOS 12.0, *)
 enum ButtonStyle {
     case auto
     case blank

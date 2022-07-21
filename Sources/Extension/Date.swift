@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension Date {
+public extension Date {
     public static func Parse(date: String, layout: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout

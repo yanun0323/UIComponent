@@ -60,7 +60,7 @@ public struct ButtonCustom<V>: View where V: View {
 
 @available(iOS 15, macOS 12.0, *)
 public extension View {
-    public func customButtonStyle(_ style: ButtonStyle) -> some View {
+    func customButtonStyle(_ style: ButtonStyle) -> some View {
         switch style {
         case .auto:
             return AnyView(self.buttonStyle(.automatic))

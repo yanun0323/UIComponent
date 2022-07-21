@@ -13,7 +13,7 @@ extension Color {
     public static let primary75: Self = .primary.opacity(0.75)
     public static let primary50: Self = .primary.opacity(0.5)
     public static let primary25: Self = .primary.opacity(0.25)
-    public static let background: Self = ColorAdapter(lightModeColor: .red, darkModeColor: .blue).Render()
+    public static var background: Self { ColorAdapter(lightModeColor: .red, darkModeColor: .blue).Render() }
     public static func Dynamic(_ lightMode: Self, _ darkMode: Self) -> Self {
         ColorAdapter(lightModeColor: lightMode, darkModeColor: darkMode).Render()
     }
@@ -21,7 +21,7 @@ extension Color {
 
 @available(iOS 15, macOS 12.0, *)
 public struct ColorAdapter {
-    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.colorScheme) public var colorScheme
     public var lightModeColor: Color
     public var darkModeColor: Color
     

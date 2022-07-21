@@ -8,13 +8,13 @@
 import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
-enum Direction {
+public enum Direction {
     case horizontal
     case vertical
 }
 
 @available(iOS 15, macOS 12.0, *)
-struct Separator: View {
+struct UISeparator: View {
     var direction: Direction = .horizontal
     var color: Color? = nil
     var size: CGFloat? = nil

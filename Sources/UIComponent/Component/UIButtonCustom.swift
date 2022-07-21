@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
-enum ButtonStyle {
+public enum ButtonStyle {
     case auto
     case blank
     case linked
@@ -16,7 +16,7 @@ enum ButtonStyle {
 
 
 @available(iOS 15, macOS 12.0, *)
-struct ButtonCustom<V>: View where V: View {
+public struct UIButtonCustom<V>: View where V: View {
     var width: CGFloat = 55
     var height: CGFloat = 22
     var color: Color = .clear
@@ -39,7 +39,7 @@ struct ButtonCustom<V>: View where V: View {
 }
 
 @available(iOS 15, macOS 12.0, *)
-extension View {
+public extension View {
     func customButtonStyle(_ style: ButtonStyle) -> some View {
         switch style {
         case .auto:

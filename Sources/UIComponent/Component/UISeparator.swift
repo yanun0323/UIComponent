@@ -14,7 +14,7 @@ public enum Direction {
 }
 
 @available(iOS 15, macOS 12.0, *)
-struct UISeparator: View {
+public struct UISeparator: View {
     var direction: Direction = .horizontal
     var color: Color? = nil
     var size: CGFloat? = nil

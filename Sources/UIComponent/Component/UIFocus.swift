@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
-struct UIFocus: View {
+public struct UIFocus: View {
     @FocusState private var focus: Bool
     @State private var textField: String = ""
     var body: some View {

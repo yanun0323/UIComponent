@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
-struct UIBlock: View {
+public struct UIBlock: View {
     var width: CGFloat? = nil
     var height: CGFloat? = nil
     var body: some View {

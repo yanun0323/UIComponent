@@ -9,22 +9,42 @@ import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
 public enum ButtonStyle {
-    public case auto
-    public case blank
-    public case linked
+    case auto
+    case blank
+    case linked
 }
 
 
 @available(iOS 15, macOS 12.0, *)
-public struct UIButtonCustom<V>: View where V: View {
-    public var width: CGFloat = 55
-    public var height: CGFloat = 22
-    public var color: Color = .clear
-    public var radius: CGFloat = 5
-    public var border: CGFloat = 1.2
-    public var style: ButtonStyle = .blank
-    public var action: () -> Void
-    public var content: () -> V
+public struct ButtonCustom<V>: View where V: View {
+    var width: CGFloat
+    var height: CGFloat
+    var color: Color
+    var radius: CGFloat
+    var border: CGFloat
+    var style: ButtonStyle
+    var action: () -> Void
+    var content: () -> V
+    
+    public init(
+        width: CGFloat = 55,
+        height: CGFloat = 22,
+        color: Color = .clear,
+        radius: CGFloat = 5,
+        border: CGFloat = 1.2,
+        style: ButtonStyle = .blank,
+        action: @escaping () -> Void,
+        content: @escaping () -> V,
+    ) {
+        self.width = width
+        self.height = height
+        self.color = color
+        self.radius = radius
+        self.border = border
+        self.style = style
+        self.action = action
+        self.content = content
+    }
     
     public var body: some View {
         Button(action: action){

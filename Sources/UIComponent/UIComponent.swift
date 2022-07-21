@@ -1,10 +1,10 @@
 import SwiftUI
-public struct UIComponent {
-    public private(set) var text = "Hello, World!"
-
-    public init() {
-    }
-    
+//public struct UIComponent {
+//    public private(set) var text = "Hello, World!"
+//
+//    public init() {
+//    }
+//    
 //    @available(iOS 15, macOS 12.0, *)
 //    public func ButtonCustom<V>(
 //        width: CGFloat = 55,
@@ -26,7 +26,7 @@ public struct UIComponent {
 //            action: action,
 //            content: content)
 //    }
-//    
+//
 //    @available(iOS 15, macOS 12.0, *)
 //    public func Block(
 //        width: CGFloat? = nil,
@@ -34,7 +34,7 @@ public struct UIComponent {
 //    ) -> some View {
 //        UIBlock(width: width, height: height)
 //    }
-//    
+//
 //    @available(iOS 15, macOS 12.0, *)
 //    public func Separator(
 //        direction: Direction = .horizontal,
@@ -43,7 +43,7 @@ public struct UIComponent {
 //    ) -> some View {
 //        UISeparator(direction: direction, color: color, size: size)
 //    }
-//    
+//
 //    @available(iOS 15, macOS 12.0, *)
 //    public func Focus() -> some View {
 //        UIFocus()

@@ -9,8 +9,14 @@ import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
 public struct Block: View {
-    public var width: CGFloat? = nil
-    public var height: CGFloat? = nil
+    var width: CGFloat?
+    var height: CGFloat?
+    
+    public init(width: CGFloat? = nil, height: CGFloat? = nil) {
+        self.width = width
+        self.height = height
+    }
+    
     public var body: some View {
         Rectangle()
             .foregroundColor(.clear)

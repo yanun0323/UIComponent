@@ -9,24 +9,24 @@ import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
 public enum ButtonStyle {
-    case auto
-    case blank
-    case linked
+    public case auto
+    public case blank
+    public case linked
 }
 
 
 @available(iOS 15, macOS 12.0, *)
 public struct UIButtonCustom<V>: View where V: View {
-    var width: CGFloat = 55
-    var height: CGFloat = 22
-    var color: Color = .clear
-    var radius: CGFloat = 5
-    var border: CGFloat = 1.2
-    var style: ButtonStyle = .blank
-    var action: () -> Void
-    var content: () -> V
+    public var width: CGFloat = 55
+    public var height: CGFloat = 22
+    public var color: Color = .clear
+    public var radius: CGFloat = 5
+    public var border: CGFloat = 1.2
+    public var style: ButtonStyle = .blank
+    public var action: () -> Void
+    public var content: () -> V
     
-    var body: some View {
+    public var body: some View {
         Button(action: action){
             RoundedRectangle(cornerRadius: radius)
                 .foregroundColor(color)
@@ -40,7 +40,7 @@ public struct UIButtonCustom<V>: View where V: View {
 
 @available(iOS 15, macOS 12.0, *)
 public extension View {
-    func customButtonStyle(_ style: ButtonStyle) -> some View {
+    public func customButtonStyle(_ style: ButtonStyle) -> some View {
         switch style {
         case .auto:
             return AnyView(self.buttonStyle(.automatic))

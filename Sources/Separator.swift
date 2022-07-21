@@ -9,15 +9,15 @@ import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
 public enum Direction {
-    case horizontal
-    case vertical
+    public case horizontal
+    public case vertical
 }
 
 @available(iOS 15, macOS 12.0, *)
 public struct UISeparator: View {
-    var direction: Direction = .horizontal
-    var color: Color? = nil
-    var size: CGFloat? = nil
+    public var direction: Direction = .horizontal
+    public var color: Color? = nil
+    public var size: CGFloat? = nil
     
     private var width: CGFloat? {
         direction == .horizontal ? nil : size ?? 1
@@ -27,7 +27,7 @@ public struct UISeparator: View {
         direction == .vertical ? nil : size ?? 1
     }
             
-    var body: some View {
+    public var body: some View {
         Rectangle()
             .foregroundColor(color ?? .gray)
             .frame(width: width, height: height)

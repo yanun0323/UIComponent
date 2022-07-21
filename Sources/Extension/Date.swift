@@ -15,12 +15,11 @@ extension Date {
         return dateFormatter.date(from: date)
     }
     
-    
     public static let Layout = DateFormatLayout()
     
-    public func String(format: String = "YYYY/MM/dd") -> String {
+    public func String(layout: String = Layout.Default) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
+        dateFormatter.dateFormat = layout
         dateFormatter.locale = Locale(identifier: "zh_Hant_TW")
         return dateFormatter.string(from: self)
     }
@@ -55,6 +54,7 @@ extension Date {
 }
 
 public struct DateFormatLayout {
+    public let Default = "yyyy-MM-dd HH:mm:ss Z"
     // "Wed Jan 02 15:04:05 2006"
     public let ANSIC = "EE MMM dd HH:mm:ss yyyy"
     // "Wed Jan 02 15:04:05 -0700 2006"

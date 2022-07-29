@@ -21,17 +21,17 @@ public struct ButtonCustom<V>: View where V: View {
     var height: CGFloat
     var color: Color
     var radius: CGFloat
-    var border: CGFloat
+    var shadow: CGFloat
     var style: ButtonStyle
     var action: () -> Void
     var content: () -> V
     
     public init(
-        width: CGFloat = 55,
-        height: CGFloat = 22,
+        width: CGFloat,
+        height: CGFloat,
         color: Color = .clear,
-        radius: CGFloat = 5,
-        border: CGFloat = 1.2,
+        radius: CGFloat = 0,
+        shadow: CGFloat = 0,
         style: ButtonStyle = .blank,
         action: @escaping () -> Void,
         content: @escaping () -> V
@@ -40,7 +40,7 @@ public struct ButtonCustom<V>: View where V: View {
         self.height = height
         self.color = color
         self.radius = radius
-        self.border = border
+        self.shadow = shadow
         self.style = style
         self.action = action
         self.content = content
@@ -49,9 +49,9 @@ public struct ButtonCustom<V>: View where V: View {
     public var body: some View {
         Button(action: action){
             RoundedRectangle(cornerRadius: radius)
+                .shadow(radius: shadow)
                 .foregroundColor(color)
                 .frame(width: width, height: height)
-                .shadow(radius: border)
                 .overlay(content: content)
         }
         .customButtonStyle(style)

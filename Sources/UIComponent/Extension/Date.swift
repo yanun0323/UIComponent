@@ -9,18 +9,17 @@ import Foundation
 import SwiftUI
 
 extension Date {
-    public static func Parse(date: String, layout: String) -> Date? {
+    public static func Parse(date: String, layout: DateFormatLayout) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
         return dateFormatter.date(from: date)
     }
     
-    public static let Layout = DateFormatLayout()
     
-    public func String(_ layout: String = Layout.Default) -> String {
+    public func String(_ layout: DateFormatLayout = .Default, _ locale: DateLocale = .US) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
-        dateFormatter.locale = Locale(identifier: "zh_Hant_TW")
+        dateFormatter.locale = Locale(identifier: locale)
         return dateFormatter.string(from: self)
     }
     
@@ -53,18 +52,3 @@ extension Date {
     }
 }
 
-public struct DateFormatLayout {
-    public let Default = "yyyy-MM-dd HH:mm:ss Z"
-    // "Wed Jan 02 15:04:05 2006"
-    public let ANSIC = "EE MMM dd HH:mm:ss yyyy"
-    // "Wed Jan 02 15:04:05 -0700 2006"
-    public let UnixDate = "EE MMM dd HH:mm:ss Z yyyy"
-    // "02 Jan 2006 15:04 -0700"
-    public let RFC822 = "dd MMM yy HH:mm Z"
-    // "Wed, 02 Jan 2006 15:04:05 -0700"
-    public let RFC1123 = "EE, dd MMM yyyy HH:mm:ss Z"
-    // "Jan 02 2006 15:04:05"
-    public let Stamp = "MMM dd HH:mm:ss"
-    // "2006-01-02"
-    public let Date = "yyyy-MM-dd"
-}

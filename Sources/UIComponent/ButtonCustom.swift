@@ -22,7 +22,6 @@ public struct ButtonCustom<V>: View where V: View {
     var color: Color
     var radius: CGFloat
     var shadow: CGFloat
-    var style: ButtonStyle
     var action: () -> Void
     var content: () -> V
     
@@ -32,7 +31,6 @@ public struct ButtonCustom<V>: View where V: View {
         color: Color = .clear,
         radius: CGFloat = 0,
         shadow: CGFloat = 0,
-        style: ButtonStyle = .blank,
         action: @escaping () -> Void,
         content: @escaping () -> V
     ) {
@@ -41,7 +39,6 @@ public struct ButtonCustom<V>: View where V: View {
         self.color = color
         self.radius = radius
         self.shadow = shadow
-        self.style = style
         self.action = action
         self.content = content
     }
@@ -54,20 +51,6 @@ public struct ButtonCustom<V>: View where V: View {
                 .frame(width: width, height: height)
                 .overlay(content: content)
         }
-        .customButtonStyle(style)
-    }
-}
-
-@available(iOS 15, macOS 12.0, *)
-public extension View {
-    func customButtonStyle(_ style: ButtonStyle) -> some View {
-        switch style {
-        case .auto:
-            return AnyView(self.buttonStyle(.automatic))
-        case .blank:
-            return AnyView(self.buttonStyle(.plain))
-        case .linked:
-            return AnyView(self.buttonStyle(.link))
-        }
+        .buttonStyle(.plain)
     }
 }

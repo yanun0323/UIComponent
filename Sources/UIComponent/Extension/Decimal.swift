@@ -8,7 +8,7 @@
 import Foundation
 
 @available(iOS 15, macOS 12.0, *)
-extension Decimal {
+public extension Decimal {
     var doubleValue: Double {
         return NSDecimalNumber(decimal:self).doubleValue
     }

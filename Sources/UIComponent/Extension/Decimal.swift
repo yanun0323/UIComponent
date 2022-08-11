@@ -5,7 +5,7 @@
 //  Created by YanunYang on 2022/8/11.
 //
 
-import Foundation
+import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
 extension Decimal {

@@ -1,6 +1,7 @@
 import XCTest
 @testable import UIComponent
 
+@available(iOS 15, macOS 12.0, *)
 final class DateTests: XCTestCase {
     func testDateParser() throws {
         let result = Date.Parse(date: "2006-01-02 15:04:05 +0800", layout: .Default)

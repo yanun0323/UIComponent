@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 15, macOS 12.0, *)
 extension Date {
     public static func Parse(date: String, layout: DateFormatLayout) -> Date? {
         let dateFormatter = DateFormatter()

@@ -7,8 +7,10 @@
 
 import Foundation
 
+@available(iOS 15, macOS 12.0, *)
 public typealias DateFormatLayout = String
 
+@available(iOS 15, macOS 12.0, *)
 public extension DateFormatLayout {
     init(_ layout: String) {
         self = layout

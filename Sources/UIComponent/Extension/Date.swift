@@ -16,8 +16,8 @@ extension Date {
         return dateFormatter.date(from: date)
     }
     
-    public func Trunc() -> Date? {
-        Date.Parse(date: self.String(.Numeric, .US), layout: .Numeric)
+    public func Trunc(_ layout: DateFormatLayout = .Numeric) -> Date? {
+        Date.Parse(date: self.String(layout, .US), layout: layout)
     }
     
     public func String(_ layout: DateFormatLayout = .Default, _ locale: DateLocale = .US) -> String {

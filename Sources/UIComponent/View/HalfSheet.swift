@@ -27,7 +27,7 @@ public struct HalfSheet<Content>: UIViewControllerRepresentable where Content : 
     
     public let content: Content
     
-    @inlinable init(@ViewBuilder content: () -> Content) {
+    public init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
     

@@ -25,16 +25,16 @@ class HalfSheetController<Content>: UIHostingController<Content> where Content :
 @available(iOS 15, macOS 12.0, *)
 public struct HalfSheet<Content>: UIViewControllerRepresentable where Content : View {
     
-    private let content: Content
+    public let content: Content
     
     @inlinable init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
     
-    func makeUIViewController(context: Context) -> HalfSheetController<Content> {
+    public func makeUIViewController(context: Context) -> HalfSheetController<Content> {
         return HalfSheetController(rootView: content)
     }
     
-    func updateUIViewController(_: HalfSheetController<Content>, context: Context) {
+    public func updateUIViewController(_: HalfSheetController<Content>, context: Context) {
     }
 }

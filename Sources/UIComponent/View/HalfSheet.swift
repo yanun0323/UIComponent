@@ -10,7 +10,7 @@ import SwiftUI
 // MARK: Controller
 @available(iOS 15, macOS 12.0, *)
 public class HalfSheetController<Content>: UIHostingController<Content> where Content : View {
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let presentation = sheetPresentationController {

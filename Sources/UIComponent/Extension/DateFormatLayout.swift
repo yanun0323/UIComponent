@@ -43,4 +43,8 @@ public extension DateFormatLayout {
     2006-01-02
     */
     static let Date: Self = "yyyy-MM-dd"
+    /**
+     20060102
+     */
+    static let Numeric: Self = "yyyyMMdd"
 }

@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-import SwiftUI
-
 // MARK: Controller
+@available(iOS 15, macOS 12.0, *)
 class HalfSheetController<Content>: UIHostingController<Content> where Content : View {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,6 +22,7 @@ class HalfSheetController<Content>: UIHostingController<Content> where Content :
 }
 
 // MARK: Structure
+@available(iOS 15, macOS 12.0, *)
 public struct HalfSheet<Content>: UIViewControllerRepresentable where Content : View {
     
     private let content: Content

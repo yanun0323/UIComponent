@@ -21,7 +21,7 @@ extension Date {
     }
     
     public func Trunc(_ layout: DateFormatLayout = .Numeric) -> Date? {
-        Date.Parse(date: self.String(layout, .US), layout: layout)
+        Date.Parse(self.String(layout, .US), layout)
     }
     
     public func String(_ layout: DateFormatLayout = .Default, _ locale: DateLocale = .US) -> String {
@@ -66,11 +66,11 @@ extension Date {
         case .Day:
             return self.Next()
         case .Week:
-            return self.AddWeek(week: 1)
+            return self.AddWeek(1)
         case .Month:
-            return self.AddMonth(month: 1)
+            return self.AddMonth(1)
         case .Year:
-            return self.AddYear(year: 1)
+            return self.AddYear(1)
         }
     }
 }

@@ -59,8 +59,8 @@ extension Date {
         return Calendar.current.date(byAdding: unit, value: value, to: self) ?? self
     }
     
-    public func Offset(_ offset: DateOffset) -> Date? {
-        switch offset {
+    public func Add(_ interval: DateInterval) -> Date? {
+        switch interval {
         case .None:
             return nil
         case .Day:

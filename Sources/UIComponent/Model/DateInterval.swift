@@ -7,6 +7,6 @@
 
 
 @available(iOS 15, macOS 12.0, *)
-public enum DateInterval: Hashable, Codable {
+public enum DateInterval: Codable {
     case None, Day, Week, Month, Year
 }

@@ -11,7 +11,7 @@ public enum DateSpan: Identifiable, Hashable, CaseIterable, Codable {
     public var ID: String { self.String() }
     case None, Day, Week, Month, Year
     
-    public func String() -> Int {
+    public func String() -> String {
         switch self {
         case .None:
             return "無"

@@ -7,7 +7,7 @@
 
 
 @available(iOS 15, macOS 12.0, *)
-public enum DateOffset: Hashable {
+public enum DateOffset: Hashable, Codable {
     case Day, Week, Month, Year
     
     public func Date(_ date: Date) -> Date {

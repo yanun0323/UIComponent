@@ -16,6 +16,10 @@ extension Date {
         return dateFormatter.date(from: date)
     }
     
+    public func IsToday() -> Bool {
+        self.String(.Numeric, .US) == Date.now.String(.Numeric, .US)
+    }
+    
     public func Trunc(_ layout: DateFormatLayout = .Numeric) -> Date? {
         Date.Parse(date: self.String(layout, .US), layout: layout)
     }

@@ -16,7 +16,7 @@ public enum DateSpan: Identifiable, Hashable, CaseIterable, Codable {
         case .None:
             return "無"
         case .Day:
-            return "天"
+            return "日"
         case .Week:
             return "週"
         case .Month:

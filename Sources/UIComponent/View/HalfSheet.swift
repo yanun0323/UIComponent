@@ -18,6 +18,7 @@ public class HalfSheetController<Content>: UIHostingController<Content> where Co
             presentation.detents = [.medium(), .large()]
             presentation.prefersGrabberVisible = true
             presentation.largestUndimmedDetentIdentifier = .medium
+            presentation.preferredCornerRadius = 10
         }
     }
 }

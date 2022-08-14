@@ -10,7 +10,7 @@ import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
 extension Date {
-    public static func Parse(date: String, layout: DateFormatLayout) -> Date? {
+    public static func Parse(_ date: String, _ layout: DateFormatLayout) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
         return dateFormatter.date(from: date)
@@ -39,24 +39,38 @@ extension Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: self) ?? self
     }
     
-    public func AddDay(day: Int) -> Date {
-        return self.Add(unit: .day, value: 1)
+    public func AddDay(_ day: Int) -> Date {
+        return self.Add(.day, 1)
     }
     
-    public func AddMonth(month: Int) -> Date {
-        return self.Add(unit: .month, value: 1)
+    public func AddMonth(_ month: Int) -> Date {
+        return self.Add(.month, 1)
     }
     
-    public func AddYear(year: Int) -> Date {
-        return self.Add(unit: .year, value: 1)
+    public func AddYear(_ year: Int) -> Date {
+        return self.Add(.year, 1)
     }
     
-    public func AddWeek(week: Int) -> Date {
-        return self.Add(unit: .day, value: 7)
+    public func AddWeek(_ week: Int) -> Date {
+        return self.Add(.day, 7)
     }
     
-    public func Add(unit: Calendar.Component, value: Int) -> Date {
+    public func Add(_ unit: Calendar.Component,_  value: Int) -> Date {
         return Calendar.current.date(byAdding: unit, value: value, to: self) ?? self
     }
+    
+    public func Offset(_ offset: DateOffset) -> Date {
+        switch offset {
+        case .Day:
+            return self.Next()
+        case .Week:
+            return self.AddWeek(week: 1)
+        case .Month:
+            return self.AddMonth(month: 1)
+        case .Year:
+            return self.AddYear(year: 1)
+        }
+    }
 }
+
 

@@ -8,21 +8,23 @@
 import SwiftUI
 
 // MARK: Controller
-@available(iOS 15, macOS 12.0, *)
+@available(iOS 15, *)
+@available(macOS, unavailable)
 public class HalfSheetController<Content>: UIHostingController<Content> where Content : View {
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let presentation = sheetPresentationController {
             presentation.detents = [.medium(), .large()]
-            presentation.prefersGrabberVisible = false
+            presentation.prefersGrabberVisible = true
             presentation.largestUndimmedDetentIdentifier = .medium
         }
     }
 }
 
 // MARK: Structure
-@available(iOS 15, macOS 12.0, *)
+@available(iOS 15, *)
+@available(macOS, unavailable)
 public struct HalfSheet<Content>: UIViewControllerRepresentable where Content : View {
     
     public let content: Content

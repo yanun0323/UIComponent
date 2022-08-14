@@ -8,7 +8,7 @@
 
 @available(iOS 15, macOS 12.0, *)
 public enum DateSpan: Identifiable, Hashable, CaseIterable, Codable {
-    var ID: Int { self.Int() }
+    public var id: Int { self.Int() }
     case None, Day, Week, Month, Year
     
     public func Int() -> Int {

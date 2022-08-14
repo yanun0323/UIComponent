@@ -7,6 +7,6 @@
 
 
 @available(iOS 15, macOS 12.0, *)
-public enum DateSpan: Identifiable, CaseIterable, Codable {
+public enum DateSpan: Identifiable, Hashable, CaseIterable, Codable {
     case None, Day, Week, Month, Year
 }

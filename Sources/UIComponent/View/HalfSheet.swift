@@ -11,6 +11,10 @@ import SwiftUI
 @available(iOS 15, *)
 @available(macOS, unavailable)
 public class HalfSheetController<Content>: UIHostingController<Content> where Content : View {
+    public var grabber: Bool = true
+    public var radius: CGFloat = 15
+    
+    
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -18,8 +22,14 @@ public class HalfSheetController<Content>: UIHostingController<Content> where Co
             presentation.detents = [.medium(), .large()]
             presentation.prefersGrabberVisible = true
             presentation.largestUndimmedDetentIdentifier = .medium
-            presentation.preferredCornerRadius = 15
+            presentation.preferredCornerRadius = radius
         }
+    }
+    
+    public func Inject(_ grabberVisible: Bool, _ cornerRadius: CGFloat) -> Self {
+        self.grabber = grabberVisible
+        self.radius = cornerRadius
+        return self
     }
 }
 
@@ -28,14 +38,18 @@ public class HalfSheetController<Content>: UIHostingController<Content> where Co
 @available(macOS, unavailable)
 public struct HalfSheet<Content>: UIViewControllerRepresentable where Content : View {
     
+    public let grabber: Bool
+    public let radius: CGFloat
     public let content: Content
     
-    public init(@ViewBuilder content: () -> Content) {
+    public init(grabber: Bool = true, radius: CGFloat = 15, @ViewBuilder content: () -> Content) {
+        self.grabber = grabber
+        self.radius = radius
         self.content = content()
     }
     
     public func makeUIViewController(context: Context) -> HalfSheetController<Content> {
-        return HalfSheetController(rootView: content)
+        return HalfSheetController(rootView: content).Inject(grabber, radius)
     }
     
     public func updateUIViewController(_: HalfSheetController<Content>, context: Context) {

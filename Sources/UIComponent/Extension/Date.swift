@@ -59,8 +59,10 @@ extension Date {
         return Calendar.current.date(byAdding: unit, value: value, to: self) ?? self
     }
     
-    public func Offset(_ offset: DateOffset) -> Date {
+    public func Offset(_ offset: DateOffset) -> Date? {
         switch offset {
+        case .None:
+            return nil
         case .Day:
             return self.Next()
         case .Week:

@@ -8,5 +8,5 @@
 
 @available(iOS 15, macOS 12.0, *)
 public enum DateOffset: Hashable, Codable {
-    case Day, Week, Month, Year
+    case None, Day, Week, Month, Year
 }

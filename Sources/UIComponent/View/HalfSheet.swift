@@ -20,7 +20,7 @@ public class HalfSheetController<Content>: UIHostingController<Content> where Co
         
         if let presentation = sheetPresentationController {
             presentation.detents = [.medium(), .large()]
-            presentation.prefersGrabberVisible = true
+            presentation.prefersGrabberVisible = grabber
             presentation.largestUndimmedDetentIdentifier = .medium
             presentation.preferredCornerRadius = radius
         }

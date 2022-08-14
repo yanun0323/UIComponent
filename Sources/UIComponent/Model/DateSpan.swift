@@ -7,6 +7,6 @@
 
 
 @available(iOS 15, macOS 12.0, *)
-public enum DateInterval: CaseIterable, Codable {
+public enum DateSpan: CaseIterable, Codable {
     case None, Day, Week, Month, Year
 }

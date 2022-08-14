@@ -59,7 +59,7 @@ extension Date {
         return Calendar.current.date(byAdding: unit, value: value, to: self) ?? self
     }
     
-    public func Add(_ interval: DateInterval) -> Date? {
+    public func Add(_ interval: DateSpan) -> Date? {
         switch interval {
         case .None:
             return nil

@@ -6,10 +6,9 @@
 //
 
 import SwiftUI
-
+#if os(iOS)
 // MARK: Controller
 @available(iOS 15, *)
-@available(macOS, unavailable)
 public class HalfSheetController<Content>: UIHostingController<Content> where Content : View {
     public var grabber: Bool = true
     public var radius: CGFloat = 15
@@ -55,3 +54,4 @@ public struct HalfSheet<Content>: UIViewControllerRepresentable where Content : 
     public func updateUIViewController(_: HalfSheetController<Content>, context: Context) {
     }
 }
+#endif

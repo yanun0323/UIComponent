@@ -8,7 +8,7 @@ import XCTest
 @testable import UIComponent
 import SwiftUI
 
-@available(macOS 12.0, *)
+@available(iOS 15,macOS 12.0, *)
 final class UIComponentTests: XCTestCase {
     func testBlock() throws {
         XCTAssertNotNil(Block())

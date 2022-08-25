@@ -45,11 +45,18 @@ public struct ButtonCustom<V>: View where V: View {
     
     public var body: some View {
         Button(action: action){
-            RoundedRectangle(cornerRadius: radius)
-                .shadow(radius: shadow)
-                .foregroundColor(color)
-                .frame(width: width, height: height)
-                .overlay(content: content)
+            if shadow == 0 {
+                RoundedRectangle(cornerRadius: radius)
+                    .foregroundColor(color)
+                    .frame(width: width, height: height)
+                    .overlay(content: content)
+            } else {
+                RoundedRectangle(cornerRadius: radius)
+                    .shadow(radius: shadow)
+                    .foregroundColor(color)
+                    .frame(width: width, height: height)
+                    .overlay(content: content)
+            }
         }
         .buttonStyle(.plain)
     }

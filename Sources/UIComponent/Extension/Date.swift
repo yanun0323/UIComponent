@@ -40,19 +40,19 @@ extension Date {
     }
     
     public func AddDay(_ day: Int) -> Date {
-        return self.Add(.day, 1)
+        return self.Add(.day, day)
     }
     
     public func AddMonth(_ month: Int) -> Date {
-        return self.Add(.month, 1)
+        return self.Add(.month, month)
     }
     
     public func AddYear(_ year: Int) -> Date {
-        return self.Add(.year, 1)
+        return self.Add(.year, year)
     }
     
     public func AddWeek(_ week: Int) -> Date {
-        return self.Add(.day, 7)
+        return self.Add(.day, 7*week)
     }
     
     public func Add(_ unit: Calendar.Component,_  value: Int) -> Date {

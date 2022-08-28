@@ -11,6 +11,6 @@ import Foundation
 import UIKit
 @available(iOS 15, *)
 public class Device {
-    public static var size: CGSize = UIScreen.main.bounds.size
+    public static let screen: CGSize = UIScreen.main.bounds
 }
 #endif

@@ -11,6 +11,6 @@ import Foundation
 import UIKit
 @available(iOS 15, *)
 public class Device {
-    public static let screen: CGRect = UIScreen.main.bounds
+//    public static let screen: CGRect = UIScreen.main.bounds
 }
 #endif

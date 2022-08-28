@@ -54,7 +54,7 @@ public struct ButtonCustom<V>: View where V: View {
                 RoundedRectangle(cornerRadius: radius)
                     .shadow(radius: shadow)
                     .foregroundColor(color)
-                    .frame(width: width, height: height)
+                    .frame(width: width > 0 ? width: .zero, height: height > 0 ? height : .zero)
                     .overlay(content: content)
             }
         }

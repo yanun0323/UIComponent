@@ -26,7 +26,7 @@ public enum DateSpan: Int, Identifiable, Hashable, CaseIterable, Codable {
         }
     }
     
-    public init(_ int: Int) {
+    init(_ int: Int) {
         switch int {
         case Self.Day.rawValue:
             self = .Day

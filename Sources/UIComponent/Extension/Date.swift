@@ -10,24 +10,21 @@ import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
 extension Date {
-    public static func Parse(_ date: String, _ layout: DateFormatLayout) -> Date? {
+    public static func Parse(_ date: String, _ layout: DateFormatLayout, _ locale: Locale = Locale.current) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
+        dateFormatter.locale = locale
         return dateFormatter.date(from: date)
     }
     
     public func IsToday() -> Bool {
-        self.String(.Numeric, .US) == Date.now.String(.Numeric, .US)
+        self.String(.Numeric) == Date.now.String(.Numeric)
     }
     
-    public func Trunc(_ layout: DateFormatLayout = .Numeric) -> Date? {
-        Date.Parse(self.String(layout, .US), layout)
-    }
-    
-    public func String(_ layout: DateFormatLayout = .Default, _ locale: DateLocale = .US) -> String {
+    public func String(_ layout: DateFormatLayout = .Default, _ locale: Locale = .current) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
-        dateFormatter.locale = Locale(identifier: locale)
+        dateFormatter.locale = locale
         return dateFormatter.string(from: self)
     }
     
@@ -59,8 +56,8 @@ extension Date {
         return Calendar.current.date(byAdding: unit, value: value, to: self) ?? self
     }
     
-    public func Add(_ interval: DateSpan) -> Date? {
-        switch interval {
+    public func Add(_ span: DateSpan) -> Date? {
+        switch span {
         case .None:
             return nil
         case .Day:

@@ -8,9 +8,6 @@ final class DateTests: XCTestCase {
         
         
         XCTAssertNotNil(result)
-        XCTAssertEqual(result?.String(.ANSIC, .US), "Mon Jan 02 15:04:05 2006")
-        XCTAssertEqual(result?.String(.ANSIC, .TW), "週一 1月 02 15:04:05 2006")
-        XCTAssertEqual(result?.String(.ANSIC, .JP), "月 1月 02 15:04:05 2006")
         
         XCTAssertEqual(result?.String(), "2006-01-02 15:04:05 +0800")
         XCTAssertEqual(result?.String(.ANSIC), "Mon Jan 02 15:04:05 2006")

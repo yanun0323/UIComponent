@@ -21,8 +21,8 @@ extension Date {
         self.String(.Numeric) == Date.now.String(.Numeric)
     }
     
-    public func Trunc(_ layout: DateFormatLayout = .Numeric) -> Date? {
-        Date.Parse(self.String(layout, .US), layout)
+    public func Trunc(_ layout: DateFormatLayout = .Numeric, _ locale: Locale = .current) -> Date? {
+        Date.Parse(self.String(layout, locale), layout)
     }
     
     public func String(_ layout: DateFormatLayout = .Default, _ locale: Locale = .current) -> String {

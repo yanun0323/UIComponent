@@ -6,18 +6,20 @@
 //
 
 import Foundation
+import SwiftUI
 
+@available(iOS 15, macOS 12.0, *)
 extension TimeInterval {
 
-    var seconds: Int {
+    public var seconds: Int {
         return Int(self.rounded())
     }
     
-    var days: Int {
+    public var days: Int {
         return self.seconds/(60*60*24)
     }
 
-    var milliseconds: Int {
+    public var milliseconds: Int {
         return Int(self * 1_000)
     }
 }

@@ -17,4 +17,11 @@ final class DateTests: XCTestCase {
         XCTAssertEqual(result?.String(.Stamp), "Jan 02 15:04:05")
         XCTAssertEqual(result?.String(.Date), "2006-01-02")
     }
+    
+    func testDayBetween() throws {
+        let A = Date.Parse("2006-01-01", .Date) ?? Date.now
+        let B = Date.Parse("2006-01-10", .Date) ?? Date.now
+        XCTAssertEqual(A.DaysBetween(B), 9)
+        
+    }
 }

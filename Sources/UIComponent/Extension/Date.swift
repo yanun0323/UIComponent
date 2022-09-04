@@ -74,6 +74,10 @@ extension Date {
             return self.AddYear(1)
         }
     }
+    
+    public func DaysBetween(_ date: Date) -> Int {
+        return self.distance(to: date).days
+    }
 }
 
 

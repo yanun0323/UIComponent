@@ -2,4 +2,4 @@
 
 A description of this package.
 
-1.2.17
+1.2.18

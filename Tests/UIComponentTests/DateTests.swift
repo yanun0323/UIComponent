@@ -22,6 +22,14 @@ final class DateTests: XCTestCase {
         let A = Date.Parse("2006-01-01", .Date) ?? Date.now
         let B = Date.Parse("2006-01-10", .Date) ?? Date.now
         XCTAssertEqual(A.DaysBetween(B), 9)
-        
+    }
+    
+    func testDayCount() throws {
+        let A = Date.Parse("2006-01-31", .Date) ?? Date.now
+        let B = Date.Parse("2006-09-15", .Date) ?? Date.now
+        let C = Date.Parse("2006-03-15", .Date) ?? Date.now
+        XCTAssertEqual(A.MonthlyDayCount(), 31)
+        XCTAssertEqual(B.MonthlyDayCount(), 30)
+        XCTAssertEqual(C.MonthlyDayCount(), 31)
     }
 }

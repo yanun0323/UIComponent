@@ -78,6 +78,12 @@ extension Date {
     public func DaysBetween(_ date: Date) -> Int {
         return self.distance(to: date).days
     }
+    
+    public func MonthlyDayCount() -> Int {
+        guard let first = Self.Parse("\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
+        let nextFirst = first.AddMonth(1)
+        return first.distance(to: nextFirst).days
+    }
 }
 
 

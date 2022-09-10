@@ -28,8 +28,8 @@ final class DateTests: XCTestCase {
         let A = Date.Parse("2006-01-31", .Date) ?? Date.now
         let B = Date.Parse("2006-09-15", .Date) ?? Date.now
         let C = Date.Parse("2006-03-15", .Date) ?? Date.now
-        XCTAssertEqual(A.MonthlyDayCount(), 31)
-        XCTAssertEqual(B.MonthlyDayCount(), 30)
-        XCTAssertEqual(C.MonthlyDayCount(), 31)
+        XCTAssertEqual(A.DaysOfMonth(), 31)
+        XCTAssertEqual(B.DaysOfMonth(), 30)
+        XCTAssertEqual(C.DaysOfMonth(), 31)
     }
 }

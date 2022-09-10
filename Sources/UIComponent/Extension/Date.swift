@@ -79,10 +79,17 @@ extension Date {
         return self.distance(to: date).days
     }
     
-    public func MonthlyDayCount() -> Int {
+    public func DaysOfMonth() -> Int {
         guard let first = Self.Parse("\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
         let nextFirst = first.AddMonth(1)
         return first.distance(to: nextFirst).days
+    }
+    
+    public func WeeksOfMonth() -> Int {
+        guard let first = Self.Parse("\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
+        let firstWeekDay = (first.timeIntervalSince1970.days+5)%7
+        let days = first.distance(to: first.AddMonth(1)).days
+        return (days+firstWeekDay+6)/7
     }
 }
 

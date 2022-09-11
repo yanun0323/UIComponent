@@ -68,14 +68,6 @@ extension Date {
 @available(iOS 15, macOS 12.0, *)
 extension Date {
     
-    public func Trunc(_ layout: DateFormatLayout = .Numeric, _ locale: Locale = .current) -> Date? {
-        Date.Parse(self.String(layout, locale), layout)
-    }
-    
-    public func TruncDate() -> Date {
-        Date(timeIntervalSince1970: 0)
-    }
-    
     public func String(_ layout: DateFormatLayout = .Default, _ locale: Locale = .current) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout

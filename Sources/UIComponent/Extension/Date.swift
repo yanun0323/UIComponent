@@ -8,21 +8,76 @@
 import Foundation
 import SwiftUI
 
+// MARK: Static function
 @available(iOS 15, macOS 12.0, *)
 extension Date {
+    
     public static func Parse(_ date: String, _ layout: DateFormatLayout, _ locale: Locale = Locale.current) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
         dateFormatter.locale = locale
         return dateFormatter.date(from: date)
     }
+}
+
+// MARK: Property
+@available(iOS 15, macOS 12.0, *)
+extension Date {
     
-    public func IsToday() -> Bool {
-        self.String(.Numeric) == Date.now.String(.Numeric)
+    /** Return the second for 1970-01-01 00:00:00 UTC*/
+    var unix: Int {
+        self.timeIntervalSince1970.seconds
     }
+    
+    /** Return the day for 1970-01-01 UTC*/
+    var unixDay: Int {
+        self.timeIntervalSince1970.days
+    }
+    
+    /** Return the day of the week
+     
+     0 = Sunday, 1 = Monday, ... 6 = Saturday
+     */
+    var dayOfWeekDay: Int {
+        (self.unixDay+5)%7
+    }
+    
+    var isToday: Bool {
+        self.unixDay == Date.now.unixDay
+    }
+    
+    var DaysOfMonth: Int {
+        let first = self.firstDayOfMonth
+        return first.distance(to: first.AddMonth(1)).days
+    }
+    
+    var WeeksOfMonth: Int {
+        guard let first = Self.Parse("\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
+        let firstWeekDay = (first.timeIntervalSince1970.days+5)%7
+        let days = first.distance(to: first.AddMonth(1)).days
+        return (days+firstWeekDay+6)/7
+    }
+    
+    var firstDayOfMonth: Date {
+        Self.Parse("\(self.String("yyyyMM", .US))01", .Numeric)!
+    }
+    
+    var WeekDay: Int {
+        (self.timeIntervalSince1970.days+5)%7
+    }
+    
+}
+
+// MARK: Function
+@available(iOS 15, macOS 12.0, *)
+extension Date {
     
     public func Trunc(_ layout: DateFormatLayout = .Numeric, _ locale: Locale = .current) -> Date? {
         Date.Parse(self.String(layout, locale), layout)
+    }
+    
+    public func TruncDate() -> Date {
+        Date(timeIntervalSince1970: 0)
     }
     
     public func String(_ layout: DateFormatLayout = .Default, _ locale: Locale = .current) -> String {
@@ -30,14 +85,6 @@ extension Date {
         dateFormatter.dateFormat = layout
         dateFormatter.locale = locale
         return dateFormatter.string(from: self)
-    }
-    
-    public func Next() -> Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: self) ?? self
-    }
-    
-    public func Prev() -> Date {
-        return Calendar.current.date(byAdding: .day, value: -1, to: self) ?? self
     }
     
     public func AddDay(_ day: Int) -> Date {
@@ -77,27 +124,6 @@ extension Date {
     
     public func DaysBetween(_ date: Date) -> Int {
         return self.distance(to: date).days
-    }
-    
-    public func DaysOfMonth() -> Int {
-        guard let first = Self.Parse("\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
-        let nextFirst = first.AddMonth(1)
-        return first.distance(to: nextFirst).days
-    }
-    
-    public func WeeksOfMonth() -> Int {
-        guard let first = Self.Parse("\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
-        let firstWeekDay = (first.timeIntervalSince1970.days+5)%7
-        let days = first.distance(to: first.AddMonth(1)).days
-        return (days+firstWeekDay+6)/7
-    }
-    
-    public func FirstDayOfMonth() -> Date? {
-        Self.Parse("\(self.String("yyyyMM", .US))01", .Numeric)
-    }
-    
-    public func WeekDay() -> Int {
-        (self.timeIntervalSince1970.days+5)%7
     }
 }
 

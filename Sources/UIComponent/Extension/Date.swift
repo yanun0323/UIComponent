@@ -25,12 +25,12 @@ extension Date {
 extension Date {
     
     /** Return the second for 1970-01-01 00:00:00 UTC*/
-    var unix: Int {
+    public var unix: Int {
         self.timeIntervalSince1970.seconds
     }
     
     /** Return the day for 1970-01-01 UTC*/
-    var unixDay: Int {
+    public var unixDay: Int {
         self.timeIntervalSince1970.days
     }
     
@@ -38,27 +38,27 @@ extension Date {
      
      0 = Sunday, 1 = Monday, ... 6 = Saturday
      */
-    var dayOfWeekDay: Int {
+    public var dayOfWeekDay: Int {
         (self.unixDay+5)%7
     }
     
-    var isToday: Bool {
+    public var isToday: Bool {
         self.unixDay == Date.now.unixDay
     }
     
-    var daysOfMonth: Int {
+    public var daysOfMonth: Int {
         let first = self.firstDayOfMonth
         return first.distance(to: first.AddMonth(1)).days
     }
     
-    var weeksOfMonth: Int {
+    public var weeksOfMonth: Int {
         guard let first = Self.Parse("\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
         let firstWeekDay = (first.timeIntervalSince1970.days+5)%7
         let days = first.distance(to: first.AddMonth(1)).days
         return (days+firstWeekDay+6)/7
     }
     
-    var firstDayOfMonth: Date {
+    public var firstDayOfMonth: Date {
         Self.Parse("\(self.String("yyyyMM", .US))01", .Numeric)!
     }
     

@@ -91,6 +91,14 @@ extension Date {
         let days = first.distance(to: first.AddMonth(1)).days
         return (days+firstWeekDay+6)/7
     }
+    
+    public func FirstDayOfMonth() -> Date? {
+        Self.Parse("\(self.String("yyyyMM", .US))01", .Numeric)
+    }
+    
+    public func WeekDay() -> Int {
+        (self.timeIntervalSince1970.days+5)%7
+    }
 }
 
 

@@ -32,4 +32,9 @@ final class DateTests: XCTestCase {
         XCTAssertEqual(B.DaysOfMonth(), 30)
         XCTAssertEqual(C.DaysOfMonth(), 31)
     }
+    
+    func testWeekDay() throws {
+        let date = Date.Parse("2022-09-11", .Date) ?? Date.now
+        XCTAssertEqual(date.WeekDay(), 0)
+    }
 }

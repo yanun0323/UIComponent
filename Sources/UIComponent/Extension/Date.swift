@@ -46,12 +46,12 @@ extension Date {
         self.unixDay == Date.now.unixDay
     }
     
-    var DaysOfMonth: Int {
+    var daysOfMonth: Int {
         let first = self.firstDayOfMonth
         return first.distance(to: first.AddMonth(1)).days
     }
     
-    var WeeksOfMonth: Int {
+    var weeksOfMonth: Int {
         guard let first = Self.Parse("\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
         let firstWeekDay = (first.timeIntervalSince1970.days+5)%7
         let days = first.distance(to: first.AddMonth(1)).days
@@ -60,10 +60,6 @@ extension Date {
     
     var firstDayOfMonth: Date {
         Self.Parse("\(self.String("yyyyMM", .US))01", .Numeric)!
-    }
-    
-    var WeekDay: Int {
-        (self.timeIntervalSince1970.days+5)%7
     }
     
 }
@@ -112,7 +108,7 @@ extension Date {
         case .None:
             return nil
         case .Day:
-            return self.Next()
+            return self.AddDay(1)
         case .Week:
             return self.AddWeek(1)
         case .Month:

@@ -9,13 +9,13 @@ final class DateTests: XCTestCase {
         
         XCTAssertNotNil(result)
         
-        XCTAssertEqual(result?.String(), "2006-01-02 15:04:05 +0800")
-        XCTAssertEqual(result?.String(.ANSIC), "Mon Jan 02 15:04:05 2006")
-        XCTAssertEqual(result?.String(.UnixDate), "Mon Jan 02 15:04:05 +0800 2006")
-        XCTAssertEqual(result?.String(.RFC822), "02 Jan 06 15:04 +0800")
-        XCTAssertEqual(result?.String(.RFC1123), "Mon, 02 Jan 2006 15:04:05 +0800")
-        XCTAssertEqual(result?.String(.Stamp), "Jan 02 15:04:05")
-        XCTAssertEqual(result?.String(.Date), "2006-01-02")
+        XCTAssertEqual(result?.String(.Default, .US), "2006-01-02 15:04:05 +0800")
+        XCTAssertEqual(result?.String(.ANSIC, .US), "Mon Jan 02 15:04:05 2006")
+        XCTAssertEqual(result?.String(.UnixDate, .US), "Mon Jan 02 15:04:05 +0800 2006")
+        XCTAssertEqual(result?.String(.RFC822, .US), "02 Jan 06 15:04 +0800")
+        XCTAssertEqual(result?.String(.RFC1123, .US), "Mon, 02 Jan 2006 15:04:05 +0800")
+        XCTAssertEqual(result?.String(.Stamp, .US), "Jan 02 15:04:05")
+        XCTAssertEqual(result?.String(.Date, .US), "2006-01-02")
     }
     
     func testDayBetween() throws {
@@ -28,13 +28,13 @@ final class DateTests: XCTestCase {
         let A = Date.Parse("2006-01-31", .Date) ?? Date.now
         let B = Date.Parse("2006-09-15", .Date) ?? Date.now
         let C = Date.Parse("2006-03-15", .Date) ?? Date.now
-        XCTAssertEqual(A.DaysOfMonth(), 31)
-        XCTAssertEqual(B.DaysOfMonth(), 30)
-        XCTAssertEqual(C.DaysOfMonth(), 31)
+        XCTAssertEqual(A.daysOfMonth, 31)
+        XCTAssertEqual(B.daysOfMonth, 30)
+        XCTAssertEqual(C.daysOfMonth, 31)
     }
     
     func testWeekDay() throws {
         let date = Date.Parse("2022-09-11", .Date) ?? Date.now
-        XCTAssertEqual(date.WeekDay(), 0)
+        XCTAssertEqual(date.dayOfWeekDay, 0)
     }
 }

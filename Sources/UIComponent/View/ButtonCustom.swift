@@ -28,7 +28,7 @@ public struct ButtonCustom<V>: View where V: View {
     public init(
         width: CGFloat,
         height: CGFloat,
-        color: Color = .clear,
+        color: Color = .transparent,
         radius: CGFloat = 0,
         shadow: CGFloat = 0,
         action: @escaping () -> Void,

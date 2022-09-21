@@ -21,12 +21,8 @@ extension Color {
     public static let primary75: Self = .primary.opacity(0.75)
     public static let primary50: Self = .primary.opacity(0.5)
     public static let primary25: Self = .primary.opacity(0.25)
-    public static func Dynamic(_ colorScheme: ColorScheme, _ lightModeColor: Self, _ darkModeColor: Self) -> Self {
-        if colorScheme == .dark {
-            return darkModeColor
-        }
-        return lightModeColor
-    }
+    public static let section: Self  = .primary.opacity(0.1)
+    public static let transparent: Self = .white.opacity(0.1).opacity(0.0101)
 }
 
 // MARK: Codable

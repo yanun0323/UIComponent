@@ -78,9 +78,9 @@ fileprivate func hotkeysSubscription(combinations: [Hotkey]) -> Bool {
 ///////////////////////
 @available(macOS 12.0, *)
 public struct Hotkey {
-    public let keyBase: [KeyBase]
-    public let key: CGKeyCode
-    public let action: () -> ()
+    let keyBase: [KeyBase]
+    let key: CGKeyCode
+    let action: () -> ()
 }
 
 @available(iOS 15, macOS 12.0, *)

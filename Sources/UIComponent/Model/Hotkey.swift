@@ -13,7 +13,7 @@ import CoreGraphics
 
 @available(macOS 12.0, *)
 extension View {
-    public func addCustomHotkeys( _ hotkeys: [Hotkey] ) -> some View {
+    public func hotkeys( _ hotkeys: [Hotkey] ) -> some View {
         self.modifier(HotKeysMod(hotkeys))
     }
 }

@@ -81,6 +81,12 @@ public struct Hotkey {
     let keyBase: [KeyBase]
     let key: CGKeyCode
     let action: () -> ()
+    
+    public init(keyBase: [KeyBase], key: CGKeyCode, action: @escaping () -> Void) {
+        self.keyBase = keyBase
+        self.key = key
+        self.action = action
+    }
 }
 
 @available(iOS 15, macOS 12.0, *)

@@ -16,7 +16,7 @@ extension View {
     public func hotkey(key: CGKeyCode, keyBase: [KeyBase], action: @escaping () -> Void) -> some View {
         self.modifier(HotKeysMod([Hotkey(keyBase: keyBase, key: key, action: action)]))
     }
-    public func addHotkeys( _ hotkeys: [Hotkey] ) -> some View {
+    public func hotkeys( _ hotkeys: [Hotkey] ) -> some View {
         self.modifier(HotKeysMod(hotkeys))
     }
 }

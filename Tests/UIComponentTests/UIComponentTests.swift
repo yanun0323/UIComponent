@@ -1,9 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by YanunYang on 2022/7/30.
-//
 import XCTest
 @testable import UIComponent
 import SwiftUI

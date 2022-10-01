@@ -1,10 +1,3 @@
-//
-//  Locale.swift
-//  UIComponent
-//
-//  Created by YanunYang on 2022/9/10.
-//
-
 import Foundation
 
 @available(iOS 15, macOS 12.0, *)

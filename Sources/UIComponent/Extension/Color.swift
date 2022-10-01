@@ -1,11 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by YanunYang on 2022/7/21.
-//
-
-
 #if os(iOS)
 import UIKit
 #elseif os(watchOS)

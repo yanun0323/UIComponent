@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by YanunYang on 2022/9/28.
-//
-
 #if os(macOS)
 import Foundation
 import SwiftUI

@@ -13,3 +13,10 @@ extension View {
         }
     }
 }
+
+@available(iOS 15, macOS 12.0, *)
+extension View {
+    public func inject<T>(_ object: T) -> some View where T: ObservableObject {
+        self.environmentObject(object)
+    }
+}

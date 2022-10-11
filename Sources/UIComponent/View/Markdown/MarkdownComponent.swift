@@ -24,7 +24,7 @@ public let defaultMapRules: [MapRule] = [
     LineMapRule(priority: 5)
 ]
 
-public struct MarkdownView<Content: View>: View {
+public struct MarkdownComponent<Content: View>: View {
     
     public let elements: [Element]
     public let content: (Element) -> Content
@@ -86,7 +86,7 @@ public struct ElementView: View {
             Header(element: header)
         case let quote as QuoteElement:
             Quote(element: quote) { item in
-                MarkdownView(elements: item) { element in
+                MarkdownComponent(elements: item) { element in
                     ElementView(element: element)
                 }
             }
@@ -94,13 +94,13 @@ public struct ElementView: View {
             Code(element: code)
         case let orderList as OrderListElement:
             OrderList(element: orderList) { item in
-                MarkdownView(elements: item) { element in
+                MarkdownComponent(elements: item) { element in
                     ElementView(element: element)
                 }
             }
         case let unorderList as UnorderListElement:
             UnorderList(element: unorderList) { item in
-                MarkdownView(elements: item) { element in
+                MarkdownComponent(elements: item) { element in
                     ElementView(element: element)
                 }
             }

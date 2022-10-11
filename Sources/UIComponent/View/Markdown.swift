@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct Markdown: View {
-    @Binding var text: String
+public struct Markdown: View {
+    @Binding public var text: String
     var body: some View {
         MarkdownView(text: text) { elem in
             ElementView(element: elem)

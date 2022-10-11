@@ -83,6 +83,7 @@ public struct MarkdownComponent: ViewRepresentable {
         if context.coordinator.content != content {
             webview.setContent(content)
         }
+        webview.setContent(context.coordinator.content)
     }
     // MARK: macOS
     public func makeNSView(context: Context) -> MarkdownWebView {

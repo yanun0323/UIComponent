@@ -13,8 +13,18 @@ public typealias CustomView = UIView
 
 // MARK: View
 public struct Markdown: View {
-    @State var text: String
+    @Environment(\.colorScheme) var colorScheme
+    @State var text: String = ""
     @State var theme: ColorScheme?
+    
+    public init(_ text: String) {
+        self.text = text
+        self.theme = colorScheme
+    }
+    public init(_ text: String, _ theme: ColorScheme?) {
+        self.text = text
+        self.theme = theme
+    }
     
     public var body: some View {
         MarkdownComponent(content: $text, theme: theme)

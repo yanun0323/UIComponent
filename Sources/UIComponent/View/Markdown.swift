@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct Markdown: View {
-    @Binding public var text: String
+    @Binding var text: String
     public var body: some View {
         MarkdownComponent(text: text) { elem in
             ElementView(element: elem)

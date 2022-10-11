@@ -14,15 +14,15 @@ public typealias CustomView = UIView
 // MARK: View
 public struct Markdown: View {
     @Environment(\.colorScheme) var colorScheme
-    @State var text: String = ""
+    @State var text: String
     @State var theme: ColorScheme?
     
     public init(_ text: String) {
-        self.text = text
+        self._text = State(initialValue: text)
         self.theme = colorScheme
     }
     public init(_ text: String, _ theme: ColorScheme?) {
-        self.text = text
+        self._text = State(initialValue: text)
         self.theme = theme
     }
     
@@ -32,7 +32,6 @@ public struct Markdown: View {
 }
 
 public struct MarkdownComponent: ViewRepresentable {
-    
     @Binding var content: String
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.markdownStyle) private var style: MarkdownStyle

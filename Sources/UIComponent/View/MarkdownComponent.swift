@@ -303,6 +303,7 @@ extension MarkdownWebView {
         webview.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         webview.topAnchor.constraint(equalTo: topAnchor).isActive = true
         webview.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        webview.adjustScroll(.null)
         
         guard let bundlePath = Bundle.module.path(forResource: "web", ofType: "bundle"),
             let bundle = Bundle(path: bundlePath),

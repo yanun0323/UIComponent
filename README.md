@@ -1,5 +1,5 @@
 # UIComponent
 
-A description of this package.
+PKG is an useful develop package collection for golang.
 
-1.2.19
+1.2.24

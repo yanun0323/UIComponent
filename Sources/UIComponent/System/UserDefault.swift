@@ -13,8 +13,8 @@ import Combine
  
  ```
  extension UserDefaults {
-     @UserDefault(key: "username", defaultValue: "Antoine van der Lee")
-     static var username: String
+     @UserDefault(key: "username")
+     static var username: String?
  }
  
  let subscription = UserDefaults.$username.sink { username in

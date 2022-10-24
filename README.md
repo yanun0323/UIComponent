@@ -1,5 +1,5 @@
 # UIComponent
 
-PKG is an useful develop package collection for golang.
+UIComponent is an useful develop package collection for swiftUI.
 
-1.2.25
+1.2.26

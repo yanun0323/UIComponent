@@ -9,6 +9,9 @@ import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
 public struct BlankView: View {
+    
+    public init() {}
+    
     public var body: some View {
         Rectangle()
             .foregroundColor(.transparent)

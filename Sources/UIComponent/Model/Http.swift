@@ -10,7 +10,17 @@ import Foundation
 public struct Http {}
 
 extension Http {
-    public static func SendRequest<T>(toUrl path: String, type: T.Type, action: @escaping (URLRequest) -> URLRequest) -> T? where T: Decodable {
+    public enum Method: String {
+        case GET = "GET"
+        case POST = "POST"
+        case PUT = "PUT"
+        case PATCH = "PATCH"
+        case DELETE = "DELETE"
+    }
+}
+
+extension Http {
+    public static func SendRequest<T>(_ method: Method = .GET, toUrl path: String, type: T.Type, action: @escaping (URLRequest) -> URLRequest) -> T? where T: Decodable {
         guard let url = URL(string: path) else {
             print("failed to generate url from string: \(path)")
             return nil
@@ -20,6 +30,9 @@ extension Http {
         
         var request = URLRequest(url: url, timeoutInterval: 30)
         request = action(request)
+        if request.httpMethod == nil {
+            request.httpMethod = method.rawValue
+        }
         
         URLSession.shared.dataTask(with: request) { data, responce, error in
             defer { channel.signal() }
@@ -43,7 +56,7 @@ extension Http {
         return result
     }
     
-    public func DumpRequest(toUrl path: String, action: @escaping (URLRequest) -> URLRequest) -> String {
+    public func DumpRequest(_ method: Method = .GET, toUrl path: String, action: @escaping (URLRequest) -> URLRequest) -> String {
         guard let url = URL(string: path) else {
             print("failed to generate url from string: \(path)")
             return ""
@@ -53,6 +66,9 @@ extension Http {
         
         var request = URLRequest(url: url, timeoutInterval: 30)
         request = action(request)
+        if request.httpMethod == nil {
+            request.httpMethod = method.rawValue
+        }
         
         URLSession.shared.dataTask(with: request) { data, responce, error in
             defer { channel.signal() }
@@ -72,7 +88,7 @@ extension Http {
         return result
     }
     
-    public func RequestStatusCode(toUrl path: String, action: @escaping (URLRequest) -> URLRequest) -> Int? {
+    public func RequestStatusCode(_ method: Method = .GET, toUrl path: String, action: @escaping (URLRequest) -> URLRequest) -> Int? {
         guard let url = URL(string: path) else {
             print("failed to generate url from string: \(path)")
             return nil
@@ -82,6 +98,9 @@ extension Http {
         
         var request = URLRequest(url: url, timeoutInterval: 30)
         request = action(request)
+        if request.httpMethod == nil {
+            request.httpMethod = method.rawValue
+        }
         
         URLSession.shared.dataTask(with: request) { _, responce, error in
             defer { channel.signal() }

@@ -7,12 +7,10 @@
 
 import Foundation
 
-struct Http {
-    
-}
+public struct Http {}
 
 extension Http {
-    static func SendRequest<T>(toUrl path: String, type: T.Type, action: @escaping (URLRequest) -> URLRequest) -> T? where T: Decodable {
+    public static func SendRequest<T>(toUrl path: String, type: T.Type, action: @escaping (URLRequest) -> URLRequest) -> T? where T: Decodable {
         guard let url = URL(string: path) else {
             print("failed to generate url from string: \(path)")
             return nil

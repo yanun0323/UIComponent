@@ -56,7 +56,7 @@ extension Http {
         return result
     }
     
-    public func DumpRequest(_ method: Method = .GET, toUrl path: String, action: @escaping (URLRequest) -> URLRequest) -> String {
+    public static func DumpRequest(_ method: Method = .GET, toUrl path: String, action: @escaping (URLRequest) -> URLRequest) -> String {
         guard let url = URL(string: path) else {
             print("failed to generate url from string: \(path)")
             return ""
@@ -88,7 +88,7 @@ extension Http {
         return result
     }
     
-    public func RequestStatusCode(_ method: Method = .GET, toUrl path: String, action: @escaping (URLRequest) -> URLRequest) -> Int? {
+    public static func RequestStatusCode(_ method: Method = .GET, toUrl path: String, action: @escaping (URLRequest) -> URLRequest) -> Int? {
         guard let url = URL(string: path) else {
             print("failed to generate url from string: \(path)")
             return nil

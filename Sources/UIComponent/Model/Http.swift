@@ -45,11 +45,12 @@ extension Http {
                 return
             }
             print("complete download, data length: \(data.count)")
-            guard let decoded = try? JSONDecoder().decode(T.self, from: data) else {
-                print("decode data failed")
-                return
+            do {
+                let decoded = try JSONDecoder().decode(T.self, from: data)
+                result = decoded
+            } catch {
+                print("decode data error, \(error)")
             }
-            result = decoded
             
         }.resume()
         channel.wait()

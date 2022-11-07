@@ -1,8 +1,8 @@
 import CoreData
 
 struct PersistenceController {
+    static private var shared: PersistenceController? = nil
     private let container: NSPersistentContainer
-
     init(name: String, inMemory: Bool = false) {
         container = NSPersistentContainer(name: name)
         if inMemory {
@@ -25,4 +25,13 @@ struct PersistenceController {
     }
 }
 
-extension PersistenceController {}
+extension PersistenceController {
+    func Get(name: String = "database", inMemory: Bool = false) -> PersistenceController {
+        guard let shared = Self.shared else {
+            let controller = Self.init(name: name)
+            Self.shared = controller
+            return controller
+        }
+        return shared
+    }
+}

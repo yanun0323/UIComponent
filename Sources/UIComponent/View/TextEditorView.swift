@@ -12,7 +12,6 @@ public struct TextEditorView: View {
     public var body: some View {
         TextEditor(text: $data)
             .onChange(of: data) { value in
-                print("data change")
                 text = data
             }
     }

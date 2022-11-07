@@ -7,8 +7,10 @@
 
 import Foundation
 
+@available(iOS 15, macOS 12.0, *)
 public struct Http {}
 
+@available(iOS 15, macOS 12.0, *)
 extension Http {
     public enum Method: String {
         case GET = "GET"
@@ -19,6 +21,7 @@ extension Http {
     }
 }
 
+@available(iOS 15, macOS 12.0, *)
 extension Http {
     public static func SendRequest<T>(_ method: Method = .GET, toUrl path: String, type: T.Type, action: @escaping (URLRequest) -> URLRequest) -> T? where T: Decodable {
         guard let url = URL(string: path) else {

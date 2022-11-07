@@ -26,8 +26,8 @@ public struct PersistenceController {
 }
 
 extension PersistenceController {
-    public func Get(name: String = "database", inMemory: Bool = false) -> PersistenceController {
-        guard let shared = Self.shared else {
+    public static func Get(name: String = "database", inMemory: Bool = false) -> PersistenceController {
+        guard let shared = shared else {
             let controller = Self.init(name: name)
             Self.shared = controller
             return controller

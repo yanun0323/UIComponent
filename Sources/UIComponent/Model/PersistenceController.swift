@@ -1,9 +1,9 @@
 import CoreData
 
-struct PersistenceController {
+public struct PersistenceController {
     static private var shared: PersistenceController? = nil
     private let container: NSPersistentContainer
-    init(name: String, inMemory: Bool = false) {
+    private init(name: String, inMemory: Bool = false) {
         container = NSPersistentContainer(name: name)
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
@@ -26,7 +26,7 @@ struct PersistenceController {
 }
 
 extension PersistenceController {
-    func Get(name: String = "database", inMemory: Bool = false) -> PersistenceController {
+    public func Get(name: String = "database", inMemory: Bool = false) -> PersistenceController {
         guard let shared = Self.shared else {
             let controller = Self.init(name: name)
             Self.shared = controller

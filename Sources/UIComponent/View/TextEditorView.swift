@@ -1,15 +1,15 @@
 import SwiftUI
 
-struct TextEditorView: View {
+public struct TextEditorView: View {
     @Binding private var text: String
     @State private var data: String
     
-    init(text: Binding<String>) {
+    public init(text: Binding<String>) {
         self._text = text
         self.data = text.wrappedValue
     }
     
-    var body: some View {
+    public var body: some View {
         TextEditor(text: $data)
             .onChange(of: data) { value in
                 print("data change")

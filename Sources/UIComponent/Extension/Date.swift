@@ -4,11 +4,11 @@ import SwiftUI
 // MARK: Static function
 @available(iOS 15, macOS 12.0, *)
 extension Date {
-    public init?(_ string: String, _ layout: DateFormatLayout, _ locale: Locale = Locale.current) {
+    public init?(from date: String, _ layout: DateFormatLayout, _ locale: Locale = Locale.current) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
         dateFormatter.locale = locale
-        guard let result = dateFormatter.date(from: string) else { return nil }
+        guard let result = dateFormatter.date(from: date) else { return nil }
         self = result
     }
 }
@@ -44,14 +44,14 @@ extension Date {
     }
     
     public var weeksOfMonth: Int {
-        guard let first = Self.init("\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
+        guard let first = Self.init(from: "\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
         let firstWeekDay = (first.timeIntervalSince1970.days+5)%7
         let days = first.distance(to: first.AddMonth(1)).days
         return (days+firstWeekDay+6)/7
     }
     
     public var firstDayOfMonth: Date {
-        Self.init("\(self.String("yyyyMM", .US))01", .Numeric)!
+        Self.init(from: "\(self.String("yyyyMM", .US))01", .Numeric)!
     }
 }
 

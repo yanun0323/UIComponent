@@ -4,19 +4,18 @@ import SwiftUI
 // MARK: Static function
 @available(iOS 15, macOS 12.0, *)
 extension Date {
-    
-    public static func Parse(_ date: String, _ layout: DateFormatLayout, _ locale: Locale = Locale.current) -> Date? {
+    public init?(_ string: String, _ layout: DateFormatLayout, _ locale: Locale = Locale.current) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
         dateFormatter.locale = locale
-        return dateFormatter.date(from: date)
+        guard let result = dateFormatter.date(from: string) else { return nil }
+        self = result
     }
 }
 
 // MARK: Property
 @available(iOS 15, macOS 12.0, *)
 extension Date {
-    
     /** Return the second for 1970-01-01 00:00:00 UTC*/
     public var unix: Int {
         self.timeIntervalSince1970.seconds
@@ -45,22 +44,20 @@ extension Date {
     }
     
     public var weeksOfMonth: Int {
-        guard let first = Self.Parse("\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
+        guard let first = Self.init("\(self.String("yyyyMM"))01", .Numeric) else { return -1 }
         let firstWeekDay = (first.timeIntervalSince1970.days+5)%7
         let days = first.distance(to: first.AddMonth(1)).days
         return (days+firstWeekDay+6)/7
     }
     
     public var firstDayOfMonth: Date {
-        Self.Parse("\(self.String("yyyyMM", .US))01", .Numeric)!
+        Self.init("\(self.String("yyyyMM", .US))01", .Numeric)!
     }
-    
 }
 
 // MARK: Function
 @available(iOS 15, macOS 12.0, *)
 extension Date {
-    
     public func String(_ layout: DateFormatLayout = .Default, _ locale: Locale = .current) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout

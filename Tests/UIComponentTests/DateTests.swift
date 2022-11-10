@@ -4,7 +4,7 @@ import XCTest
 @available(iOS 15, macOS 12.0, *)
 final class DateTests: XCTestCase {
     func testDateParser() throws {
-        let result = Date.Parse("2006-01-02 15:04:05 +0800", .Default)
+        let result = Date.init("2006-01-02 15:04:05 +0800", .Default)
         
         
         XCTAssertNotNil(result)
@@ -19,22 +19,22 @@ final class DateTests: XCTestCase {
     }
     
     func testDayBetween() throws {
-        let A = Date.Parse("2006-01-01", .Date) ?? Date.now
-        let B = Date.Parse("2006-01-10", .Date) ?? Date.now
+        let A = Date("2006-01-01", .Date) ?? Date.now
+        let B = Date("2006-01-10", .Date) ?? Date.now
         XCTAssertEqual(A.DaysBetween(B), 9)
     }
     
     func testDayCount() throws {
-        let A = Date.Parse("2006-01-31", .Date) ?? Date.now
-        let B = Date.Parse("2006-09-15", .Date) ?? Date.now
-        let C = Date.Parse("2006-03-15", .Date) ?? Date.now
+        let A = Date("2006-01-31", .Date) ?? Date.now
+        let B = Date("2006-09-15", .Date) ?? Date.now
+        let C = Date("2006-03-15", .Date) ?? Date.now
         XCTAssertEqual(A.daysOfMonth, 31)
         XCTAssertEqual(B.daysOfMonth, 30)
         XCTAssertEqual(C.daysOfMonth, 31)
     }
     
     func testWeekDay() throws {
-        let date = Date.Parse("2022-09-11", .Date) ?? Date.now
+        let date = Date("2022-09-11", .Date) ?? Date.now
         XCTAssertEqual(date.dayOfWeekDay, 0)
     }
 }

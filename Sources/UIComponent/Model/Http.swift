@@ -23,6 +23,18 @@ extension Http {
 
 @available(iOS 15, macOS 12.0, *)
 extension Http {
+    /**
+    Send a request and get structure response
+     
+    ```swift
+    let url = "http://api/user"
+    let user = Http.SendRequest(.GET, toUrl: url, type: User.self) { delegate in
+        var request = delegate
+        // do something ...
+        return request
+    }
+    ```
+     */
     public static func SendRequest<T>(_ method: Method = .GET, toUrl path: String, type: T.Type, action: @escaping (URLRequest) -> URLRequest) -> T? where T: Decodable {
         guard let url = URL(string: path) else {
             print("failed to generate url from string: \(path)")
@@ -60,6 +72,18 @@ extension Http {
         return result
     }
     
+    /**
+     Send a request and get string response
+     
+     ```swift
+     let url = "http://api/user"
+     let body = Http.DumpRequest(.GET, toUrl: url, type: User.self) { delegate in
+        var request = delegate
+        // do something ...
+        return request
+     }
+     ```
+     */
     public static func DumpRequest(_ method: Method = .GET, toUrl path: String, action: @escaping (URLRequest) -> URLRequest) -> String {
         guard let url = URL(string: path) else {
             print("failed to generate url from string: \(path)")
@@ -92,6 +116,18 @@ extension Http {
         return result
     }
     
+    /**
+     Send a request and get status code
+     
+     ```swift
+     let url = "http://api/user"
+     let code = Http.RequestStatusCode(.GET, toUrl: url, type: User.self) { delegate in
+        var request = delegate
+        // do something ...
+        return request
+     }
+     ```
+     */
     public static func RequestStatusCode(_ method: Method = .GET, toUrl path: String, action: @escaping (URLRequest) -> URLRequest) -> Int? {
         guard let url = URL(string: path) else {
             print("failed to generate url from string: \(path)")

@@ -1,11 +1,11 @@
 import CoreData
 
 @available(macOS 12.0, iOS 15, *)
-public struct PersistenceController {
+public struct DatabaseController {
     /**
      Default persistence controller for database named "database". (all lowercase)
-     */
-    static private var shared = PersistenceController(name: "database")
+    */
+    static private var shared = DatabaseController(name: "database")
     private let container: NSPersistentContainer
     private init(name: String, inMemory: Bool = false) {
         container = NSPersistentContainer(name: name)
@@ -30,7 +30,7 @@ public struct PersistenceController {
 }
 
 @available(macOS 12.0, *)
-extension PersistenceController {
+extension DatabaseController {
     /**
       The view context of shared.
      */

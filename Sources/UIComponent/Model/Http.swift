@@ -45,9 +45,7 @@ extension Http {
         
         var request = URLRequest(url: url, timeoutInterval: 30)
         request = action(request)
-        if request.httpMethod == nil {
-            request.httpMethod = method.rawValue
-        }
+        request.httpMethod = method.rawValue
         
         URLSession.shared.dataTask(with: request) { data, responce, error in
             defer { channel.signal() }
@@ -94,9 +92,7 @@ extension Http {
         
         var request = URLRequest(url: url, timeoutInterval: 30)
         request = action(request)
-        if request.httpMethod == nil {
-            request.httpMethod = method.rawValue
-        }
+        request.httpMethod = method.rawValue
         
         URLSession.shared.dataTask(with: request) { data, responce, error in
             defer { channel.signal() }
@@ -138,9 +134,7 @@ extension Http {
         
         var request = URLRequest(url: url, timeoutInterval: 30)
         request = action(request)
-        if request.httpMethod == nil {
-            request.httpMethod = method.rawValue
-        }
+        request.httpMethod = method.rawValue
         
         URLSession.shared.dataTask(with: request) { _, responce, error in
             defer { channel.signal() }

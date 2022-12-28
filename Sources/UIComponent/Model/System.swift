@@ -23,7 +23,7 @@ extension System {
     public static let device: Device = .init()
 }
 
-struct Device {
+public struct Device {
     public let screen: CGRect = UIScreen.main.bounds
 }
 #endif

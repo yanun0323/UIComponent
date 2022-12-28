@@ -8,7 +8,7 @@ public struct ToggleCustom: View {
     var ratio: CGFloat
     var gap: CGFloat
     
-    init(
+    public init(
         isOn: Binding<Bool>,
         color: Binding<Color>,
         size: CGFloat = 26,

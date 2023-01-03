@@ -7,6 +7,27 @@ public struct System {
     public static let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "-"
 }
 
+@available(macOS 12.0, iOS 15, *)
+extension System {
+    public static func Async(background: @escaping () -> Void = {}, main: @escaping () -> Void) {
+        DispatchQueue.global().async {
+            background()
+            DispatchQueue.main.async {
+                main()
+            }
+        }
+    }
+    
+    public static func Async<T>(background: @escaping () -> T = {}, main: @escaping (T) -> Void) {
+        DispatchQueue.global().async {
+            let data = background()
+            DispatchQueue.main.async {
+                main(data)
+            }
+        }
+    }
+}
+
 #if os(macOS)
 import AppKit
 

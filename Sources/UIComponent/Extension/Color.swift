@@ -107,8 +107,8 @@ extension Color {
         )
     }
     
-    public init(string: String?) {
-        guard let str = string else {
+    public init(description: String?) {
+        guard let str = description else {
             self = .clear
             return
         }
@@ -134,9 +134,5 @@ extension Color {
             blue:  Double(b) / 255,
             opacity: Double(a) / 255
         )
-    }
-    
-    public func String() -> String {
-        self.description
     }
 }

@@ -83,6 +83,12 @@ extension Color {
             self = .clear
             return
         }
+        
+        if str.isEmpty {
+            self = .clear
+            return
+        }
+        
         let hex = str.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&int)
@@ -107,32 +113,15 @@ extension Color {
         )
     }
     
-    public init(description: String?) {
-        guard let str = description else {
-            self = .clear
-            return
-        }
-        let ss = str.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: ss).scanHexInt64(&int)
-        let r, g, b, a: UInt64
-        switch ss.count {
-            case 3: // RGB (12-bit)
-                (r, g, b, a) = ((int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17, 255)
-            case 6: // RGB (24-bit)
-                (r, g, b, a) = (int >> 16, int >> 8 & 0xFF, int & 0xFF, 255)
-            case 8: // ARGB (32-bit)
-                (r, g, b, a) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-            default:
-                (r, g, b, a) = (1, 1, 1, 1)
-        }
+    public var hex: String {
+        guard let c = SystemColor(self).cgColor.components else { return "" }
+        let r = UInt8((c[0]*255+0.5))
+        let g = UInt8((c[1]*255+0.5))
+        let b = UInt8((c[2]*255+0.5))
+        let a = UInt8((c[3]*255+0.5))
         
-        self.init(
-            .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue:  Double(b) / 255,
-            opacity: Double(a) / 255
-        )
+        return String(format:"#%02X%02X%02X%02X", r, g, b, a)
     }
 }
+
+

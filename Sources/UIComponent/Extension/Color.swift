@@ -121,10 +121,10 @@ extension Color {
         let b = UInt8((c[2]*255+0.5))
         let a = UInt8((c[3]*255+0.5))
         #else
-        let a = UInt8((c[0]*255+0.5))
-        let r = UInt8((c[1]*255+0.5))
-        let g = UInt8((c[2]*255+0.5))
-        let b = UInt8((c[3]*255+0.5))
+        let g = UInt8((c[0]*255+0.5)) // 22
+        let b = UInt8((c[1]*255+0.5)) // 33
+        let a = UInt8((c[2]*255+0.5)) // FF
+        let r = UInt8((c[3]*255+0.5)) // 11
         #endif
         
         return String(format:"#%02X%02X%02X%02X", r, g, b, a)

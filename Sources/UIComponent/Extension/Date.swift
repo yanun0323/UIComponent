@@ -4,11 +4,11 @@ import SwiftUI
 // MARK: Static function
 @available(iOS 15, macOS 12.0, *)
 extension Date {
-    public init?(from date: String, _ layout: DateFormatLayout, _ locale: Locale = Locale.current) {
+    public init?(from date: String, _ layout: DateFormatLayout, _ locale: Locale = Locale.current, _ timezone: TimeZone? = nil) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
         dateFormatter.locale = locale
-        dateFormatter.timeZone = .UTC
+        dateFormatter.timeZone = timezone ?? .UTC
         guard let result = dateFormatter.date(from: date) else { return nil }
         self = result
     }
@@ -67,12 +67,12 @@ extension Date {
 // MARK: Function
 @available(iOS 15, macOS 12.0, *)
 extension Date {
-    public func String(_ layout: DateFormatLayout = .Default, _ locale: Locale = .current) -> String
+    public func String(_ layout: DateFormatLayout = .Default, _ locale: Locale = .current, _ timezone: TimeZone? = nil) -> String
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
         dateFormatter.locale = locale
-        dateFormatter.timeZone = .UTC
+        dateFormatter.timeZone = timezone
         return dateFormatter.string(from: self)
     }
 

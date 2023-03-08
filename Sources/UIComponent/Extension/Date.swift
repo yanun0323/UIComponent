@@ -8,7 +8,7 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
         dateFormatter.locale = locale
-        dateFormatter.timeZone = .autoupdatingCurrent
+        dateFormatter.timeZone = .UTC
         guard let result = dateFormatter.date(from: date) else { return nil }
         self = result
     }
@@ -72,7 +72,7 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = layout
         dateFormatter.locale = locale
-        dateFormatter.timeZone = .autoupdatingCurrent
+        dateFormatter.timeZone = .UTC
         return dateFormatter.string(from: self)
     }
 

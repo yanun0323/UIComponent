@@ -19,22 +19,22 @@ final class DateTests: XCTestCase {
     }
     
     func testDayBetween() throws {
-        let A = Date(from: "2006-01-01", .Date) ?? Date.now
-        let B = Date(from: "2006-01-10", .Date) ?? Date.now
+        let A = Date(from: "2006-01-01", .Date)!
+        let B = Date(from: "2006-01-10", .Date)!
         XCTAssertEqual(A.DaysBetween(B), 9)
     }
     
     func testDayCount() throws {
-        let A = Date(from: "2006-01-31", .Date) ?? Date.now
-        let B = Date(from: "2006-09-15", .Date) ?? Date.now
-        let C = Date(from: "2006-03-15", .Date) ?? Date.now
+        let A = Date(from: "2006-01-31", .Date)!
+        let B = Date(from: "2006-09-15", .Date)!
+        let C = Date(from: "2006-03-15", .Date)!
         XCTAssertEqual(A.daysOfMonth, 31)
         XCTAssertEqual(B.daysOfMonth, 30)
         XCTAssertEqual(C.daysOfMonth, 31)
     }
     
     func testWeekDay() throws {
-        let date = Date(from: "2022-09-11", .Date) ?? Date.now
+        let date = Date(from: "2022-09-11", .Date)!
         XCTAssertEqual(date.dayOfWeekDay, 0)
     }
 }

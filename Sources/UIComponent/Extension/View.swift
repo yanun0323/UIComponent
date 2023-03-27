@@ -14,7 +14,7 @@ extension View {
     }
     
     @ViewBuilder
-    public func section(_ title: String, font: Font = .title3, spacing: CGFloat = 10 , @ViewBuilder _ content: () -> some View) -> some View {
+    static public func section(_ title: String, font: Font = .title3, spacing: CGFloat = 10 , @ViewBuilder _ content: () -> some View) -> some View {
         VStack (alignment: .leading, spacing: 5) {
             if title.count != 0 {
                 Text(title)

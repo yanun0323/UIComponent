@@ -14,7 +14,7 @@ extension View {
     }
 
     @ViewBuilder
-    public func section(_ title: String, font: Font = .title3, spacing: CGFloat = 10) -> some View {
+    public func section(_ title: String = "", font: Font = .title3, spacing: CGFloat = 10) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             if title.count != 0 {
                 Text(title)
@@ -22,17 +22,11 @@ extension View {
                     .foregroundColor(.primary50)
                     .padding(.leading, 5)
             }
-            HStack(spacing: 0) {
-                Spacer()
-                VStack(spacing: spacing) {
-                    self
-                }
-                Spacer()
-            }
-            .padding(.vertical)
-            .padding(.horizontal, 5)
-            .background(Color.section.opacity(0.5))
-            .cornerRadius(7)
+            self
+                .padding(.vertical)
+                .padding(.horizontal, 5)
+                .background(Color.section.opacity(0.5))
+                .cornerRadius(7)
         }
     }
 }

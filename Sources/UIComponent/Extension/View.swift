@@ -5,17 +5,17 @@ extension View {
     public func placeholder<Content: View>(
         when shouldShow: Bool,
         alignment: Alignment = .leading,
-        @ViewBuilder placeholder: () -> Content) -> some View
-    {
+        @ViewBuilder placeholder: () -> Content
+    ) -> some View {
         ZStack(alignment: alignment) {
             placeholder().opacity(shouldShow ? 1 : 0)
             self
         }
     }
-    
+
     @ViewBuilder
-    static public func section(_ title: String, font: Font = .title3, spacing: CGFloat = 10 , @ViewBuilder _ content: () -> some View) -> some View {
-        VStack (alignment: .leading, spacing: 5) {
+    public func section(_ title: String, font: Font = .title3, spacing: CGFloat = 10) -> some View {
+        VStack(alignment: .leading, spacing: 5) {
             if title.count != 0 {
                 Text(title)
                     .font(font)
@@ -25,7 +25,7 @@ extension View {
             HStack(spacing: 0) {
                 Spacer()
                 VStack(spacing: spacing) {
-                    content()
+                    self
                 }
                 Spacer()
             }

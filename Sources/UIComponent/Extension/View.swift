@@ -14,7 +14,10 @@ extension View {
     }
 
     @ViewBuilder
-    public func section(_ title: String = "", font: Font = .title3) -> some View {
+    public func section(
+        _ title: String = "", font: Font = .title3, radius: CGFloat = 15,
+        bg: Color = .section.opacity(0.5)
+    ) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             if title.count != 0 {
                 Text(title)
@@ -27,8 +30,8 @@ extension View {
                 self
                 Spacer()
             }
-            .background(Color.section.opacity(0.5))
-            .cornerRadius(7)
+            .background(bg)
+            .cornerRadius(radius)
         }
     }
 }

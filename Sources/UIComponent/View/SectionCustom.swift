@@ -1,12 +1,23 @@
 import SwiftUI
 
 @available(iOS 15, macOS 12.0, *)
-public struct SectionCustom<Content>: View where Content: View {
+public struct SectionCustom<V>: View where V: View {
     var title: LocalizedStringKey
-    var font: Font = .caption
-    var radius: CGFloat = 15
-    var bg: Color = .section.opacity(0.5)
-    @ViewBuilder var content: () -> Content
+    var font: Font
+    var radius: CGFloat
+    var bg: Color
+    var content: () -> V
+
+    public init(
+        _ title: LocalizedStringKey, font: Font = .caption, radius: CGFloat = 15,
+        bg: Color = .section.opacity(0.5), content: @escaping () -> V
+    ) {
+        self.title = title
+        self.font = font
+        self.radius = radius
+        self.bg = bg
+        self.content = content
+    }
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 5) {

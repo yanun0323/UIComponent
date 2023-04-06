@@ -4,16 +4,19 @@ import SwiftUI
 public struct SectionCustom<V>: View where V: View {
     var title: LocalizedStringKey
     var font: Font
+    var color: Color
     var radius: CGFloat
     var bg: Color
     var content: () -> V
 
     public init(
-        _ title: LocalizedStringKey, font: Font = .caption, radius: CGFloat = 15,
+        _ title: LocalizedStringKey, font: Font = .caption, color: Color = .section,
+        radius: CGFloat = 15,
         bg: Color = .section.opacity(0.5), content: @escaping () -> V
     ) {
         self.title = title
         self.font = font
+        self.color = color
         self.radius = radius
         self.bg = bg
         self.content = content
@@ -24,7 +27,7 @@ public struct SectionCustom<V>: View where V: View {
             if title != "" {
                 Text(title)
                     .font(font)
-                    .foregroundColor(.section)
+                    .foregroundColor(color)
                     .padding(.leading, 5)
             }
             content()

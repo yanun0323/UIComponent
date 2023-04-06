@@ -14,9 +14,9 @@ extension View {
     }
 
     @ViewBuilder
-    public func section(
+    public static func SectionCustom(
         _ title: String = "", font: Font = .title3, radius: CGFloat = 15,
-        bg: Color = .section.opacity(0.5)
+        bg: Color = .section.opacity(0.5), @ViewBuilder content: () -> some View
     ) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             if title.count != 0 {
@@ -25,13 +25,9 @@ extension View {
                     .foregroundColor(.section)
                     .padding(.leading, 5)
             }
-            HStack {
-                Spacer()
-                self
-                Spacer()
-            }
-            .background(bg)
-            .cornerRadius(radius)
+            content()
+                .background(bg)
+                .cornerRadius(radius)
         }
     }
 }

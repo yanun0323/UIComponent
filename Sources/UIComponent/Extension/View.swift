@@ -19,12 +19,16 @@ extension View {
             if title.count != 0 {
                 Text(title)
                     .font(font)
-                    .foregroundColor(.primary50)
+                    .foregroundColor(.section)
                     .padding(.leading, 5)
             }
-            self
-                .background(Color.section.opacity(0.5))
-                .cornerRadius(7)
+            HStack {
+                Spacer()
+                self
+                Spacer()
+            }
+            .background(Color.section.opacity(0.5))
+            .cornerRadius(7)
         }
     }
 }

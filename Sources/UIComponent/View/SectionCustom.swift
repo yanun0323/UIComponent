@@ -36,8 +36,8 @@ public struct SectionCustom<V>: View where V: View {
 
 struct SectionCustom_Previews: PreviewProvider {
     static var previews: some View {
-        SectionCustom(title: "123") {
-
+        SectionCustom("123") {
+            Text("Hello")
         }
     }
 }

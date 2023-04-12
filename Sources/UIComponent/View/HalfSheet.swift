@@ -29,8 +29,8 @@ import SwiftUI
         ) -> Self {
             self.grabber = grabberVisible
             self.radius = cornerRadius
-            s.forEach { ss in
-                switch ss {
+            style.forEach { s in
+                switch s {
                 case .medium:
                     self.detents.append(.medium())
                 case .large:
